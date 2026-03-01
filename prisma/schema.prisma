@@ -60,12 +60,15 @@ model Order {
   consumptionMethod ConsumptionMethod
   restaurant        Restaurant        @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
   restaurantId      String
-  orderProducts     OrderProduct[]
+  orderProducts     OrderProduct[]    // Relacionamento com a tabela de produtos do pedido
   customerName      String
   customerCpf       String
+  customerEmail     String?           // Torne o campo opcional (nullable)
   createdAt         DateTime          @default(now())
   updatedAt         DateTime          @updatedAt
 }
+
+
 
 model OrderProduct {
   id        String   @id @default(uuid())
